@@ -305,6 +305,28 @@ responsesToSignals(responses: QuestionResponse[]): Signal[]
 
 ---
 
+## Web Application Routes
+
+### v2 Routes (THE TWELVE)
+
+| Route | Description |
+|-------|-------------|
+| `/v2/quiz` | Take the initial profiling quiz |
+| `/v2/profile` | View your taste genome |
+
+### API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/v2/quiz` | POST | Submit quiz responses |
+| `/api/v2/quiz` | GET | Get profiling progress |
+| `/api/v2/genome/[userId]` | GET | Get full genome (server-side) |
+| `/api/v2/genome/[userId]/public` | GET | Get public genome (client-safe) |
+| `/api/v2/genome/[userId]/sigil` | POST | Reveal sigil |
+| `/api/v2/signals/[userId]` | POST | Submit behavioural signals |
+
+---
+
 ## Development
 
 ```bash
