@@ -149,7 +149,7 @@ export default function QuizPageV2() {
                 THE TWELVE
               </h1>
               <p className="text-bone-muted mb-2">
-                Three questions.
+                Ten questions.
               </p>
               <p className="text-bone-faint text-sm mb-12">
                 Discover which archetype shapes your creative taste.
@@ -164,7 +164,7 @@ export default function QuizPageV2() {
               </button>
 
               <p className="text-bone-faint text-xs mt-8">
-                ~30 seconds
+                ~90 seconds
               </p>
             </motion.div>
           </motion.div>
@@ -182,7 +182,7 @@ export default function QuizPageV2() {
             <ProfilingQuiz
               questions={questions}
               stageName="Initial Spark"
-              stageDescription="Three questions to discover your primary Glyph."
+              stageDescription="Discover your primary Glyph."
               onComplete={handleComplete}
             />
 

@@ -138,10 +138,17 @@ export async function updateGenomeFromSignals(
     dailyDecay: 0.97 // ~30 day half-life
   });
 
-  // Classify using all signals
+  // When using default psychometrics (no real behavioral data),
+  // lower psychometric weight so quiz answers dominate classification.
+  // Default config is 0.7 psychometric / 0.3 signals — this inverts it
+  // for quiz-only users so their actual answers matter.
+  const hasRealPsychometrics = existingGenome?._engine?.psychometrics
+    || await fetchPsychometricsFromProfile(userId);
+
   const classificationResult = classify({
     signals: decayedSignals,
-    existingPsychometrics
+    existingPsychometrics,
+    config: hasRealPsychometrics ? {} : { psychometricWeight: 0.2 }
   });
 
   // Create genome from classification
