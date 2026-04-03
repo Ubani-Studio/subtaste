@@ -40,6 +40,13 @@ export default function QuizPageV2() {
   const [result, setResult] = useState<GenomeResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Check for existing userId from localStorage or URL params
+  const [existingUserId] = useState<string | null>(() => {
+    if (typeof window === 'undefined') return null;
+    const params = new URLSearchParams(window.location.search);
+    return params.get('userId') || localStorage.getItem('subtaste_user_id') || null;
+  });
+
   // Convert profiler questions to UI format
   const questions = INITIAL_QUESTIONS.map((q: BinaryQuestion) => ({
     id: q.id,
@@ -62,7 +69,10 @@ export default function QuizPageV2() {
       const response = await fetch('/api/v2/quiz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ responses }),
+        body: JSON.stringify({
+          responses,
+          ...(existingUserId ? { userId: existingUserId } : {}),
+        }),
       });
 
       const data = await response.json();
@@ -99,7 +109,7 @@ export default function QuizPageV2() {
       setError(err instanceof Error ? err.message : 'An error occurred');
       setState('quiz');
     }
-  }, []);
+  }, [existingUserId]);
 
   const handleSigilReveal = useCallback(async () => {
     if (!result) return;

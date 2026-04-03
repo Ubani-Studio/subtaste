@@ -93,7 +93,8 @@ export default function ProfilePageV2() {
   };
 
   const handleRetakeQuiz = () => {
-    router.push('/v2/quiz');
+    const userId = localStorage.getItem('subtaste_user_id');
+    router.push(userId ? `/v2/quiz?userId=${userId}` : '/v2/quiz');
   };
 
   if (loading) {
