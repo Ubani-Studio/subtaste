@@ -1,6 +1,6 @@
 # subtaste
 
-Unified taste profiling infrastructure for the VIOLET SPHINX ecosystem.
+Unified taste profiling infrastructure for the Alabo ecosystem.
 
 ## The Twelve
 
@@ -37,7 +37,7 @@ The architecture is deliberately opaque. Users receive their Glyph. The machiner
 ### Strategic Roadmap
 
 **Year 1-5**: Establish subtaste as the standard taste profiling library for creative tools
-- Ship SDK, gain adoption across VIOLET SPHINX ecosystem
+- Ship SDK, gain adoption across the Alabo ecosystem
 - Prove predictive validity
 - Build B2B API for external developers
 
@@ -344,7 +344,7 @@ pnpm dev
 
 ## Licence
 
-Proprietary. VIOLET SPHINX ecosystem only.
+Proprietary. Alabo ecosystem only.
 
 ---
 
